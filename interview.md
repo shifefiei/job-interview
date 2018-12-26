@@ -2,7 +2,7 @@
 
 加载因子越大,填满的元素越多,好处是,空间利用率高了,但冲突的机会加大了.链表长度会越来越长,查找效率降低。
 所以引入红黑树？原因：
-(1)大的链表表遍历很耗时，使用树的话时间复杂度从O(n)降到了O(log2n)
+(1)大的链表表遍历很耗时，使用树的话时间复杂度从O(n)降到了O(logN)
 (2)JDK1.8之前的版本大家都知道是put过程中的resize方法在调用transfer方法的时候导致的死锁
 
 1. 什么是hash冲突：两个相同的对象hashCode值相同，往我们的map里面存储的时候在同一个桶位置上，此时该如何处理？
@@ -10,8 +10,20 @@
 - 再哈希法 ：利用不同的hash函数对冲突的元素再hash
 - 链地址法 : jdk 1.7中的链表添加
 
-put是如何放元素：hash后的元素对应的位置上是否有元素，没有直接添加元素；有的话先会判断是不是同一个元素，是的话就覆盖，不是的话会判断是否可以转化
-成树，否则直接添加
+2. put 方法是如何插入元素
+(1)hash后的元素对应的位置上是否有元素，没有直接添加元素<br/>
+(2)有的话先会判断是不是同一个元素，是同一个就覆盖<br/>
+(3)不是的话会判断是否可以转化成红黑树树，否则直接添加
+
+3. get 方法 <br/>
+(1) 拿到key的hash值 <br/>
+(2) 检查是是第一个元素，是直接返回 <br/>
+(3) 遍历链表，判断是否是树，如果是去查找树
+
+4. 那么HashMap根据hashcode是如何得到数组下标呢？可以拆分为以下几步：
+    (1) h = key.hashCode() <br/>
+    (2) h ^ (h >>> 16) : 高16位 异或 低16位,保证高位低位都能参与到计算中 <br/>
+    (3) (length - 1) & hash ：对length 取模
 
 ```java
 class HashMap {
@@ -19,7 +31,7 @@ class HashMap {
         //初始桶容量是 16
         static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; 
     
-        //最大桶容量 1<<30.
+        //最大桶容量 1<<30 = 2^30
         static final int MAXIMUM_CAPACITY = 1 << 30;
    
         /**
@@ -51,7 +63,7 @@ class HashMap {
     public V put(K key, V value) {
             return putVal(hash(key), key, value, false, true);
     }
-    
+
     static final int hash(Object key) {
             int h;
             return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
@@ -111,14 +123,246 @@ class HashMap {
         }
 }
 ```
+
+5. resize 方法如何扩容
+先插入元素在进行扩容
+- jdk 1.7操作
+```java
+class HashMap {
+    void resize(int newCapacity) {//传入新的容量  
+        //引用扩容前的Entry数组
+        Entry[] oldTable = table;      
+        int oldCapacity = oldTable.length; 
+        //扩容前的数组大小如果已经达到最大(2^30)了
+        if (oldCapacity == MAXIMUM_CAPACITY) { 
+            //修改阈值为int的最大值(2^31-1)，这样以后就不会扩容了
+            threshold = Integer.MAX_VALUE;   
+            return;  
+        }  
+      
+        //初始化一个新的Entry数组
+        Entry[] newTable = new Entry[newCapacity];    
+        //将数据转移到新的Entry数组里 !!!
+        transfer(newTable); 
+        //HashMap的table属性引用新的Entry数组 
+        table = newTable;
+        //修改阈值
+        threshold = (int) (newCapacity * loadFactor);  
+    }  
+    
+    //拷贝数组元素
+    void transfer(Entry[] newTable) {  
+        Entry[] src = table;//src引用了旧的Entry数组                    
+        int newCapacity = newTable.length;  
+        for (int j = 0; j < src.length; j++) { //遍历旧的Entry数组  
+            Entry<K, V> e = src[j];//取得旧Entry数组的每个元素  
+            if (e != null) {  
+                src[j] = null;//释放旧Entry数组的对象引用（for循环后，旧的Entry数组不再引用任何对象）  
+                do {  
+                    Entry<K, V> next = e.next;  
+                    int i = indexFor(e.hash, newCapacity); //重新计算每个元素在数组中的位置 !!!  
+                    e.next = newTable[i]; //单链表的头插入方式，同一位置上新元素总会被放在链表的头部位置
+                    newTable[i] = e;      //将元素放在数组上  
+                    e = next;             //访问下一个Entry链上的元素  
+                } while (e != null);  
+            }  
+        }  
+    } 
+    
+    //计算新数组索引
+    int indexFor(int h, int length) {  
+        return h & (length - 1);  
+    }  
+}
+```
+- jdk 1.8中的扩容操作
+```java
+
+class HashMap {
+    Node<K,V>[] resize() {
+            Node<K,V>[] oldTab = table;
+            int oldCap = (oldTab == null) ? 0 : oldTab.length;
+            int oldThr = threshold;
+            int newCap, newThr = 0;
+            //如果有容量,说明该map已经有元素
+            if (oldCap > 0) { 
+                if (oldCap >= MAXIMUM_CAPACITY) {
+                    threshold = Integer.MAX_VALUE;
+                    return oldTab;
+                }
+                //在此处newCap = oldCap << 1，容量翻倍了
+                else if ((newCap = oldCap << 1) < MAXIMUM_CAPACITY &&
+                         oldCap >= DEFAULT_INITIAL_CAPACITY)
+                    newThr = oldThr << 1; // double threshold
+            }
+            else if (oldThr > 0) // initial capacity was placed in threshold
+                newCap = oldThr;
+            else {               // zero initial threshold signifies using defaults
+                newCap = DEFAULT_INITIAL_CAPACITY;
+                newThr = (int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);
+            }
+            if (newThr == 0) {
+                float ft = (float)newCap * loadFactor;
+                newThr = (newCap < MAXIMUM_CAPACITY && ft < (float)MAXIMUM_CAPACITY ?
+                          (int)ft : Integer.MAX_VALUE);
+            }
+            threshold = newThr;
+             @SuppressWarnings({"rawtypes","unchecked"})
+               Node<K,V>[] newTab = (Node<K,V>[])new Node[newCap];
+           table = newTab;
+           /**
+            * 上面一顿操作，最后总结就是：
+            * 1> 如果是最开始还没有元素的情况：
+            *     1、如果初始化的时候带了参数
+            *         （HashMap(int initialCapacity, float loadFactor)），
+            *         那么newCap就是你的initialCapacity参数
+            *         threshold就是 (int)(initialCapacity*loadFactor)
+            *     2、否则就按默认的算 initialCapacity = 16，threshold = 12
+            * 2> 如果已经有元素了，那么直接扩容2倍，如果oldCap >= DEFAULT_INITIAL_CAPACITY了，那么threshold也扩大两倍
+            */
+           if (oldTab != null) {
+               //将原来map中非null的元素rehash之后再放到newTab里面去
+               for (int j = 0; j < oldCap; ++j) {
+                   Node<K,V> e;
+                   if ((e = oldTab[j]) != null) {
+                       oldTab[j] = null;
+                       //如果这个oldTab[j]就一个元素，那么就直接放到newTab里面
+                       if (e.next == null) 
+                           newTab[e.hash & (newCap - 1)] = e;
+                       else if (e instanceof TreeNode)
+                           //如果原来这个节点已经转化为红黑树了，
+                           //那么我们去将树上的节点rehash之后根据hash值放到新地方
+                           ((TreeNode<K,V>)e).split(this, newTab, j, oldCap);
+                       else { // preserve order
+                       /**
+                        * 这里的操作就是 (e.hash & oldCap) == 0 这一句，
+                        *  这一句如果是true，表明(e.hash & (newCap - 1))还会和
+                        *  e.hash & (oldCap - 1)一样。因为oldCap和newCap是2的次幂，
+                        *  并且newCap是oldCap的两倍，就相当于oldCap的唯一
+                        *  一个二进制的1向高位移动了一位
+                        *  (e.hash & oldCap) == 0就代表了(e.hash & (newCap - 1))还会和
+                        *  e.hash & (oldCap - 1)一样。
+    
+                        *  比如原来容量是16，那么就相当于e.hash & (00010000) 
+                        *  （ 00001111 就是 oldCap - 1 = 16 - 1 = 15），
+                        *  现在容量扩大了一倍，就是32，那么rehash定位就等于
+                        *  e.hash & （00011111） （00011111 就是newCap - 1 = 32 - 1 = 31）
+                        *  现在(e.hash & oldCap) == 0 就表明了
+                        *  e.hash & （00010000） == 0，这样的话，不就是
+                        *  已知： e.hash &  （00011111） = hash定位值Value
+                        *  并且  e.hash & （00010000） = 0
+                        *  那么   e.hash & （00011111） 不也就是
+                        *  原来的hash定位值Value吗
+    
+                        *  那么就只需要根据这一个二进制位就可以判断下次hash定位在
+                        *  哪里了。将hash冲突的元素连在两条链表上放在相应的位置
+                        *  不就行了嘛
+                        */
+                          Node<K,V> loHead = null, loTail = null;
+                          Node<K,V> hiHead = null, hiTail = null;
+                          Node<K,V> next;
+                          do {
+                              next = e.next;
+                              if ((e.hash & oldCap) == 0) {
+                                  if (loTail == null)
+                                      loHead = e;
+                                  else
+                                      loTail.next = e;
+                                  loTail = e;
+                              }
+                              else {
+                                  if (hiTail == null)
+                                      hiHead = e;
+                                  else
+                                      hiTail.next = e;
+                                  hiTail = e;
+                              }
+                          } while ((e = next) != null);
+                          if (loTail != null) {
+                              loTail.next = null;
+                              newTab[j] = loHead;
+                          }
+                          if (hiTail != null) {
+                              hiTail.next = null;
+                              newTab[j + oldCap] = hiHead;
+                          }
+                      }
+                  }
+              }
+          }
+          return newTab;
+  }
+}
+
+```
+<br/>[参考文章](https://blog.csdn.net/runrun117/article/details/80249556)<br/>
+    
+
+
 ### ConcurrentHashMap 原理
 
+#### jdk 1.7 中的 ConcurrentHashMap
+它的数据接口是数组 + 链表，使用了分段锁解决了并发问题 Segment<K,V>[] segments。
+- 改进一：取消segments字段，直接采用 transient volatile Node<K,V>[] table 保存数据，
+  采用table数组元素作为锁，从而实现了对每一行数据进行加锁，进一步减少并发冲突的概率。
+  
+- 改进二：将原先table数组＋单向链表的数据结构，变更为table数组＋单向链表＋红黑树的结构。这种结构将时间复杂度可以降低到O(logN)。
+
+### jdk 1.8 ConcurrentHashMap
+
+
+### ConcurrentHashMap 扩容两个链表相交的判断
+
+
 ### synchronized加在static方法和非static方法上区别
+- 表示此时的lock锁对象不一样，static 方法的锁是当前类的Class对象，而非static方法的锁是当前调用该方法的对象，它们之间不会产生互斥
 
 ### 线程池核心参数解释
+线程池的核心思想是把宝贵的线程资源放到一个池子中，每次使用的时候就去池子中取，用完之后又放回去。
+1. 常见的线程池
+```text
+    Executors.newSingleThreadExecutor() 创建单个线程，池子里只有一个线程，如果线程因为异常结束，会新建一个线程，使用 LinkedBlockingQueue 队列。
 
-### spring aop实现方式了解
+    Executors.newCachedThreadPool() 创建一个可伸缩的线程池，将复用可用线程，如果没有可用线程，则创建一个添加到池子中去，60s中未使用的线程将被移除， 使用 SynchronousQueue 队列。
+
+    Executors.newFixedThreadPool(int nThread) 创建固定大小的线程池，使用的是 LinkedBlockingQueue 队列。
+
+    Executors.newWorkStealingPool()
+
+    Executors.newSingleThreadScheduledExecutor()
+
+    Executors.newScheduledThreadPool(int corePoolSize)
+```
+
+2. 线程池的工作机制及其原理
+(1) 线程池中的核心队列
+    BlockingQueue : 用于保存将要执行的任务并将其传递给工作中的线程队列。存储等待执行的任务
+    HashSet : 包含所有的持有锁的工作线程
+(2) 线程池核心参数
+```text
+    corePoolSize : 线程池的基本大小。创建线程池后，默认情况下线程池中的线程个数0，当任务来了之后，就会去创建一个线程去执行任务，
+    当线程数量达到 corePoolSize 后就会把新任务放到 BlockingQueue 队列中去。
+    
+    maximumPoolSize : 线程池最大线程个数。当线程数大于 corePoolSize，小于 maximumPoolSize 线程会被释放。
+    
+    keepAliveTime 和 unit : 线程空闲后的存活时间。只有当线程数大于 corePoolSize 时，keepAliveTime 才会起作用。
+    
+    workQueue : 用于存放任务的阻塞队列。
+    
+    handler : 当队列和最大线程池都满了之后的饱和拒绝策略。
+    
+    ThreadPoolExecutor.AbortPolicy : 直接抛出异常
+    ThreadPoolExecutor.DiscardPolicy : 不处理，丢弃掉
+    ThreadPoolExecutor.DiscardOldestPolicy : 丢弃队列里最近的一个任务，并执行当前任务
+    ThreadPoolExecutor.CallerRunsPolicy : 只用调用者所在的线程来运行任务
+```
+
+
+### spring aop的原理和实现
+
 通过反射，动态代理（java动态代理，cglib动态代理)
+
+### spring ioc的原理和实现
 
 ### mysql基本索引存储结构,二叉树? 联合索引
 
@@ -256,7 +500,7 @@ tree: 数据结构 OK 遍历算法：不清晰
 9. tomcat集群及并发支持量
 10.系统安全机制用的是什么
 11. mq 数据丢失问题
-12.concurrenthashmap 扩容，两个链表相交判断
+12.
 
 
 ### static 和 final 关键字
