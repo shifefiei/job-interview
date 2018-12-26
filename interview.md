@@ -111,12 +111,153 @@ class HashMap {
         }
 }
 ```
+### ConcurrentHashMap 原理
+
+### synchronized加在static方法和非static方法上区别
+
+### 线程池核心参数解释
+
+### spring aop实现方式了解
+通过反射，动态代理（java动态代理，cglib动态代理)
+
+### mysql基本索引存储结构,二叉树? 联合索引
+
+### 基本命令了解，统计某个文件中某个人登录次数，不ok;
+
+### git没用过，用的svn；maven解决冲突
 
 
 
-线程安全的hashmap,concurrentHashmap了解原理
+#### String StringBuffer StringBuilder 区别String ok StringBuffer 安全 StringBuilder不安全 stringbuilder使用场景不知道
 
-synchronized加在static方法和非static方法上区别：不ok；
+### object equals == 区别  和 String equals == 区别
+
+### 二叉树结构：不太了解了
+
+
+### 线程的状态
+
+状态：就绪 运行 结束 等待 堵塞；
+
+sleep wait 区别：sleep 不释放锁 wait 释放锁 notify后流程：先获取锁再执行
+
+sync : 底层原理不清楚, 加在不同地方: 锁类、锁对象 理解不对
+
+lock : 与sync区别：不知道 使用场景：没使用
+
+volatile：可见性、原子性
+
+automic:原理没研究过
+
+ThreadLocal：原理OK；子线程用父线程TheadLocal对象：可以，不知道如何实现
+
+
+IOC：默认：多例 
+
+AOP: 动态代理：jdk cglib 区别
+
+bean 循环依赖：没遇到场景
+
+事务传播：原理基本知道AOP实现 
+
+
+OOM: 不清楚
+回收机制：没有细研究过
+
+策略：场景题：计算器设计 
+
+是否走索引：不知道
+
+
+3.spring aop实现方式了解，ok；但是，对cglib没用过，不清楚优缺点；不OK
+
+5.基本命令了解 grep，top，netstat等使用过，一般;
+
+6.git基本没使用过；
+
+
+GC垃圾回收算法，OK
+
+5.设计模式：基本OK
+
+6.mysql:数据量不大，没有优化经验，不OK。
+
+索引：不了解内部数据结构。
+
+7.mq无法说清楚内部结构。
+
+dubbo:基本了解。一般
+
+8.知道redis基础数据结构，一般。
+
+
+
+
+
+6.
+引擎:innodb\myisam 
+区别：
+ 锁： innoDB行级锁，myisam表级
+ 事务：innoDB支持,myisam不支持，
+ 索引：innoDB BTree，myisam 压缩 不OK
+隔离级别：4种OK 幻读含义：回答不正确 不可重复读：回答不正确 不OK
+索引：explain
+联合索引: 走索引方式 回答基本OK
+
+
+栈内存溢出程序：无法写出。不OK。
+
+
+
+6.索引数据结构，Btree，hash，btree索引的适用范围。不OK。
+
+聚簇索引和非聚簇索引之间的区别，不ok。
+
+7.查看日志命令，cat，grep，top，chmod等，ok。
+
+jdk提供的命令有了解，jstack查看进程运行状态但是，jmap和jstat之间区别记得不够清楚。
+
+8.jar包冲突，rebase和reset之间区别，不ok
+
+
+1.
+String StringBuffer StringBuilder 区别OK，StringBuffer是线程安全的,StringBuilder是线程不安全的 常用 StringBuffer StringBuilder 使用场景不太明确
+HaspMap 结构：数据+链表；key算法：不知道 
+concurrenthashmap: 线程安全的。比hashTable效率高 锁分段算法：没看过
+String equals ==: 比较方式回答不对
+tree: 数据结构 OK 遍历算法：不清晰
+
+
+事务传播：原理基本知道AOP实现，事务应用 OK
+
+6.oracle、mysql索引数据结构：没关注过
+引擎:不知道
+隔离机制：不知道
+
+
+3.线程安全的单例模式：无法写出。对于其他设计模式，只知道基本名称。不OK
+
+4.mysql索引数据结构及优化：能够基本使用，底层实现不清楚。不OK
+
+5.排序算法：知道插入和快排思路。OK
+
+6.JDK8的特性，不了解。不OK
+
+
+
+1.数据库分库 分表 事物控制
+2.redis缓存及集群方式
+3.IO模式原理及应用场景
+4.多线程 ThreadLocal  volidate  atomic原子型原理及在项目中的应用
+5.大并发  设计  mq  ngix  redis  数据集多主多重  zookeeper 然后延展问原理及内部机   制
+6.分布式事务锁
+7.jvm优化
+8.前段Ajax 及HTTP之间多线程访问的问题
+9. tomcat集群及并发支持量
+10.系统安全机制用的是什么
+11. mq 数据丢失问题
+12.concurrenthashmap 扩容，两个链表相交判断
+
 
 ### static 和 final 关键字
 1. static关键字
@@ -161,203 +302,18 @@ final休息的类不能够被继承
 例如被外部类的方法修改等，而导致内部类得到的值不一致；
 
 
-2.线程池核心参数了解意义,不ok；
 
-3.spring aop实现方式了解，不ok；通过反射，动态代理（java动态代理，cglib动态代理）？？？
 
-4.mysql基本索引存储结构,二叉树，不ok；
 
-联合索引，不ok
 
-5.基本命令了解，统计某个文件中某个人登录次数，不ok;
 
-6.git没用过，用的svn；maven解决冲突，不ok；
 
-7.jvm没怎么用过，不了解。
 
 
 
 
-1.
-String StringBuffer StringBuilder 区别String ok StringBuffer 安全 StringBuilder不安全 stringbuilder使用场景不知道
-HaspMap 看过部分原码 深层就不知道了
-concurrenthashmap: 没有看过及用过
-object equals == 区别：OK String equals ==: ok
-二叉树结构：不太了解了
-2.
-状态：就绪 运行 结束 等待 堵塞； sleep wait 区别：sleep 不释放锁 wait 释放锁 notify后流程：先获取锁再执行 
-sync : 底层原理不清楚, 加在不同地方: 锁类、锁对象 理解不对
-lock : 与sync区别：不知道 使用场景：没使用
-volatile：可见性、原子性
-automic:原理没研究过
-ThreadLocal：原理OK；子线程用父线程TheadLocal对象：可以，不知道如何实现
 
-3.
-IOC：默认：多例 
-AOP: 动态代理：jdk cglib 区别：ok
-bean 循环依赖：没遇到场景
 
-4.
-jvm : 了解不多
-OOM: 不清楚
-回收机制：没有细研究过
 
-5.
-策略：场景题：计算器设计 
 
-6.
-是否走索引：不知道
 
-
-
-1.HashMap的解决冲突了解，一般
-
-线程安全的hashmap,concurrentHash了解原理。不OK
-
-synchronized加在static方法和非static方法上区别：基本不知道，不ok；
-
-2.线程池核心参数了解意义,不ok；
-
-3.spring aop实现方式了解，ok；但是，对cglib没用过，不清楚优缺点；不OK
-
-4.mysql基本索引存储结构,不知道 ，不ok；
-
-5.基本命令了解，grep，top，netstat等使用过，一般;
-
-6.git基本没使用过，用的svn；
-
-
-
-
-
-OC：基本说清内部结构，
-AOP: 基本说清动态代理，一般。
-
- 4.jvm : 内部结构基本了解，调优参数知道，一般。
-
-GC垃圾回收算法，OK
-
-5.设计模式：基本OK
-
-6.mysql:数据量不大，没有优化经验，不OK。
-
-索引：不了解内部数据结构。
-
-7.mq无法说清楚内部结构，不OK。
-
-dubbo:基本了解。一般
-
-8.知道redis基础数据结构，一般。
-
-
-
-
-1.
-String StringBuffer StringBuilder 区别String ok StringBuffer线程不安全 StringBuilder线程安全 记混了 常用StringBuffer 不OK
-HaspMap 结构：数据+链表；下标算法：不知道；新元素放到链表位置：头部 不OK
-HashMap与HashTable: HashTable是线程安全的，加锁方式：不确定是sync还是lock 不OK
-concurrenthashmap: 比HashMap并发好。效率高 锁分段算法：不知道 不OK
-object equals == 区别：OK String equals ==: ok
-二叉树结构：对数据结构比较弱 不OK
-2.
-状态：就绪 运行 结束 等待 堵塞； sleep wait 区别：sleep 释放锁 wait 不释放锁 不OK
-sync : 原理不太了解, 加在不同地方: 不OK
-volatile：可见性、原子性，应用场景：比较模糊
-ThreadLocal：原理OK；子线程用父线程TheadLocal对象：不可以（回答不正确）
-
-3.
-IOC：默认：单例 可以多例 
-AOP: 动态代理：jdk cglib 区别：不知道 不OK
-bean 循环依赖：没研究过
-事务传播：原理基本知道AOP实现 
-4.
-OOM: PC不会引起
-回收器：不太了解 不OK
-回收对象机制：了解比较浅 不OK
-5.
-策略：场景题：计算器设计 不OK
-
-6.
-引擎:innodb\myisam 
-区别：
- 锁： innoDB行级锁，myisam表级
- 事务：innoDB支持,myisam不支持，
- 索引：innoDB BTree，myisam 压缩 不OK
-隔离级别：4种OK 幻读含义：回答不正确 不可重复读：回答不正确 不OK
-索引：explain
-联合索引: 走索引方式 回答基本OK
-
-
-栈内存溢出程序：无法写出。不OK。
-
-
-
-6.索引数据结构，Btree，hash，btree索引的适用范围。不OK。
-
-聚簇索引和非聚簇索引之间的区别，不ok。
-
-7.查看日志命令，cat，grep，top，chmod等，ok。
-
-jdk提供的命令有了解，jstack查看进程运行状态但是，jmap和jstat之间区别记得不够清楚。
-
-8.jar包冲突，rebase和reset之间区别，不ok
-
-
-1.
-String StringBuffer StringBuilder 区别OK，StringBuffer是线程安全的,StringBuilder是线程不安全的 常用 StringBuffer StringBuilder 使用场景不太明确
-HaspMap 结构：数据+链表；key算法：不知道 
-concurrenthashmap: 线程安全的。比hashTable效率高 锁分段算法：没看过
-String equals ==: 比较方式回答不对
-tree: 数据结构 OK 遍历算法：不清晰
-2.
-状态：新建 就绪 运行 堵塞 死亡； sleep wait 区别：sleep 不释放锁 wait 释放锁 notify：直接就绪，等待CPU执行 不OK
-线程等待：join 
-sync : 底层原理不知道
-lock : 与sync区别没了解过
-volatile：没用过
-threadLocal：没用过
-atomic：没听过
-3.
-IOC：概念OK，默认：单例 可以多例，但不实现过
-AOP: 动态代理：jdk cglib 区别：不知道
-bean 循环依赖：SPRING解决方案 没看过 
-事务传播：原理基本知道AOP实现，事务应用 OK
-4.
-jvm 不太了解
-5.
-策略：不知道，应用不OK
-
-6.
-oracle、mysql索引数据结构：没关注过
-引擎:不知道
-隔离机制：不知道
-mysql联合索引: 走索引方式 不OK
-
-
-1.java基础：知道HashMap,ArayList,linkedList底层实现；OK
-
-2.JVM内存模型：了解基本的分区分代，知道基本的堆内存和栈内存；一般；
-
-3.线程安全的单例模式：无法写出。对于其他设计模式，只知道基本名称。不OK
-
-4.mysql索引数据结构及优化：能够基本使用，底层实现不清楚。不OK
-
-5.排序算法：知道插入和快排思路。OK
-
-6.JDK8的特性，不了解。不OK
-
-7.缓存：知道redis的基本使用.一般
-
-
-1.数据库分库 分表 事物控制
-2.redis缓存及集群方式
-3.IO模式原理及应用场景
-4.多线程 ThreadLocal  volidate  atomic原子型原理及在项目中的应用
-5.大并发  设计  mq  ngix  redis  数据集多主多重  zookeeper 然后延展问原理及内部机   制
-6.分布式事务锁
-7.jvm优化
-8.前段Ajax 及HTTP之间多线程访问的问题
-9. tomcat集群及并发支持量
-10.系统安全机制用的是什么
-11. mq 数据丢失问题
-12.concurrenthashmap 扩容，两个链表相交判断
