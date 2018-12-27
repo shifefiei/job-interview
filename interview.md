@@ -418,11 +418,7 @@ ioc 控制反转，指将对象的创建权，反转到spring容器 ; di 依赖�
 在这里，Spring让ApplicationContext成为了资源访问策略的“决策者”
 - [代理模式](https://github.com/shifefiei/dp-review/blob/master/dp-proxy/src/main/resources/proxy.md)
 
-
-
 ### mysql基本索引存储结构?什么是联合索引？
-
-
 
 
 ### 基本命令了解，统计某个文件中某个人登录次数，不ok;
