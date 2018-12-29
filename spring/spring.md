@@ -53,7 +53,7 @@ ioc 控制反转，指将对象的创建权，反转到spring容器 ; di 依赖�
 #### spring 中用到了那些设计模式
 - [工厂方法模式](https://github.com/shifefiei/dp-review/blob/master/dp-factory/src/main/resources/factory.md)，比如各种 BeanFactory
 - [单例模式](https://github.com/shifefiei/dp-review/blob/master/dp-singleton/src/main/resources/singleton.md)，spring 默认单例模式
-- 策略模式，例如：当bean需要访问资源配置文件时就会用到策略模式。Resource 接口封装了各种可能的资源类型，
+- [策略模式](https://github.com/shifefiei/dp-review/blob/master/dp-strategy/src/main/resources/strategy.md)，例如：当bean需要访问资源配置文件时就会用到策略模式。Resource 接口封装了各种可能的资源类型，
 包括了：UrlResource，ClassPathResource，FileSystemResource等，Spring需要针对不同的资源采取不同的访问策略。
 在这里，Spring让ApplicationContext成为了资源访问策略的“决策者”
 - [代理模式](https://github.com/shifefiei/dp-review/blob/master/dp-proxy/src/main/resources/proxy.md)
