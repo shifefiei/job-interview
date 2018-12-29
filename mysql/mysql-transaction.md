@@ -10,13 +10,13 @@
     ![脏读](https://github.com/shifefiei/job-interview/blob/master/static/picture/zangdu.png)
 - 不可重复读: 指事务A读取了事务B已经提交的更改数据。假如A在取款事务的过程中，B往该账户转账100，A两次读取的余额发生不一致
 - 幻读: 事务A读取事务B提交的新增数据,会引发幻读问题,比如账户总金额统计：<br/>
-    ![幻读]((https://github.com/shifefiei/job-interview/blob/master/static/picture/huandu.png))<br/>
+    ![幻读](https://github.com/shifefiei/job-interview/blob/master/static/picture/huandu.png)<br/>
     不可重复读和幻读的区别是：前者是指读到了已经提交的事务的 更改数据（修改或删除），后者是指读到了其他已经提交事务的 新增数据
 - 丢失更新
 1. 事务A撤销时，把事务B已经提交的更新数据覆盖了
-    ![更新丢失1]((https://github.com/shifefiei/job-interview/blob/master/static/picture/update-1.png))<br/>
+    ![更新丢失1](https://github.com/shifefiei/job-interview/blob/master/static/picture/update-1.png)<br/>
 2. 事务A覆盖事务B已经提交的数据，造成事务B所做的操作丢失
-    ![更新丢失2]((https://github.com/shifefiei/job-interview/blob/master/static/picture/update-2.png))<br/>
+    ![更新丢失2](https://github.com/shifefiei/job-interview/blob/master/static/picture/update-2.png)<br/>
     
 #### 事务隔离级别
-  ![幻读]((https://github.com/shifefiei/job-interview/blob/master/static/picture/update-2.png))<br/>
+  ![幻读](https://github.com/shifefiei/job-interview/blob/master/static/picture/update-2.png))<br/>
