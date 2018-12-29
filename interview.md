@@ -4,8 +4,6 @@
 
 ### git没用过，用的svn；maven解决冲突
 
-
-
 ### 二叉树结构：不太了解了
 
 
@@ -55,17 +53,8 @@ thrift:
 https://www.cnblogs.com/chenny7/p/4224720.html
 
 
-6.
-引擎:innodb\myisam 
-区别：
- 锁： innoDB行级锁，myisam表级
- 事务：innoDB支持,myisam不支持，
- 索引：innoDB BTree，myisam 压缩 不OK
-隔离级别：4种OK 幻读含义：回答不正确 不可重复读：回答不正确 不OK
+
 索引：explain
-
-
-
 栈内存溢出程序：无法写出。不OK。
 
 

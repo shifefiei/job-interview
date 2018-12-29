@@ -1,5 +1,5 @@
 ### redis的数据类型
-1. String（字符串），可以存储任何数据
+1. String（字符串），可以存储任何数据,在 Redis 中字符串类型的值最大只能保存 512 MB。
 2. Hash（哈希表），键值对集合
 3. List（列表），底层是双向链表
 4. Set（集合）
@@ -23,5 +23,18 @@ RDB 是一个非常紧凑（compact）的文件，它保存了 Redis 在某个�
 3. AOF优缺点<br/>
 使用 AOF 持久化会让 Redis 变得非常耐久，可以没秒进行一次操作；但是文件体积比较大，但是丢失数据比较少；
 
+### Redis复习参考文章
+1. [Redis复习精讲](http://blog.jobbole.com/114050/?utm_source=blog.jobbole.com&utm_medium=relatedPosts)
+
+
+
+### Redis 相关的java客户端
+1. Jedis
+    github：https://github.com/xetorthio/jedis
+    文档：https://github.com/xetorthio/jedis/wiki
+
+2. Redisson：
+    github：https://github.com/redisson/redisson
+    文档：https://github.com/redisson/redisson/wiki
 
 
