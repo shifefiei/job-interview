@@ -39,4 +39,22 @@
     四、final修饰的参数，表示该参数是不可变的
     在内部类中，final是很有用的；如果我们定义了一个匿名内部类，并且希望使用一个外部类的参数，该参数要加final关键字修饰；为了避免引用值发生改变，
     例如被外部类的方法修改等，而导致内部类得到的值不一致；
+    
+
+### synchronized加在static方法和非static方法上区别
+- 表示此时的lock锁对象不一样，static 方法的锁是当前类的Class对象，而非static方法的锁是当前调用该方法的对象，它们之间不会产生互斥
+
+### String、StringBuffer、StringBuilder区别，StringBuilder 的使用场景不知道
+1. String 是java非常基础和重要的类，提供了构造和管理字符串的基本功能，它被声明为 final 类型的类，属性也是 final 的。在实际开发中使用的很频繁。<br/>
+(1) java 避免系统产生大量的 String 对象，引入了字符串常量池(属于jvm内存模型的方法区)的概念。其运行机制是：首先检查池中是否有值相同的字符串对象，
+如果有则不需要创建直接从池中刚查找到的对象引用；如果没有则新建字符串对象，返回对象引用，并且将新创建的对象放入池中。该原则只适用于通过直接量给String对象引用赋值的情况。
+对于通过new方法创建的String对象是不检查字符串池的，而是直接在堆区或栈区创建一个新的对象，也不会把对象放入池中。<br/>
+(2) String对象一旦生成，则不能再对它进行改变,保证了被多线程读取后内容不变
+
+2. StringBuffer 和 StringBuilder，底层的存储结构和 String 都是一样的，使用的是char数组；不同点是StringBuffer/StringBuilder对象的值是可以改变；
+3. StringBuffer是线程安全的，而StringBuilder是线程不安全的，StringBuffer类中方法定义前面都会有synchronize关键字。为此，StringBuffer的性能要远低于StringBuilder。
+
+4. 应用场景
+(1) 在字符串内容不经常发生变化的业务场景优先使用String类。字符串拼接避免使用 "+",会产生大量无用的中间对象，消耗内存空。<br/>
+(2) 频繁的字符串操作的情况使用 StringBuffer(多线程时使用) 和 StringBuilder(单线程时使用)
 

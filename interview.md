@@ -7,8 +7,6 @@
 ### ConcurrentHashMap 扩容两个链表相交的判断
 
 
-### synchronized加在static方法和非static方法上区别
-- 表示此时的lock锁对象不一样，static 方法的锁是当前类的Class对象，而非static方法的锁是当前调用该方法的对象，它们之间不会产生互斥
 
 
 
@@ -16,7 +14,7 @@
 
 
 
-### mysql基本索引存储结构?什么是联合索引？
+
 
 
 ### 基本命令了解，统计某个文件中某个人登录次数，不ok;
@@ -25,7 +23,7 @@
 
 
 
-#### String StringBuffer StringBuilder 区别String ok StringBuffer 安全 StringBuilder不安全 stringbuilder使用场景不知道
+#### String ok StringBuffer 安全 StringBuilder不安全 stringbuilder使用场景不知道
 
 ### object equals == 区别  和 String equals == 区别
 
@@ -49,10 +47,6 @@ automic:原理没研究过
 ThreadLocal：原理OK；子线程用父线程TheadLocal对象：可以，不知道如何实现
 
 
-IOC：默认：多例 
-
-AOP: 动态代理：jdk cglib 区别
-
 bean 循环依赖：没遇到场景
 
 事务传播：原理基本知道AOP实现 
@@ -63,10 +57,7 @@ OOM: 不清楚
 
 策略：场景题：计算器设计 
 
-是否走索引：不知道
 
-
-3.spring aop实现方式了解，ok；但是，对cglib没用过，不清楚优缺点；不OK
 
 5.基本命令了解 grep，top，netstat等使用过，一般;
 

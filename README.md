@@ -15,6 +15,9 @@
 ### 线程
 1. [线程池](https://github.com/shifefiei/job-interview/blob/master/thread/thread-pool.md)
 
+### jvm
+1. [G1收集器调优指南](https://docs.oracle.com/javase/9/gctuning/garbage-first-garbage-collector-tuning.htm#JSGCT-GUID-90E30ACA-8040-432E-B3A0-1E0440AB556A)
+
 
 
 ### 其他java面试总结

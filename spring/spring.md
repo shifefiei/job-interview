@@ -5,17 +5,17 @@
 spring aop 都知道是面向切面编程，主要的实现手段有 spring-aop 和 AspectJ
 
 - spring aop 
-spring aop 采用的是动态代理模式实现的，即利用jdk动态代理和cglib动态代理
-(1) jdk代理的实现利用了java.lang.reflect包的Proxy类的newProxyInstance方法 以及 InvocationHandler 接口来调用具体方法
-(2) cglib 依赖spring-core核心包，是一个代码生成类库，可以在运行时动态的生成某个类的子类
+spring aop 采用的是动态代理模式实现的，即利用jdk动态代理和cglib动态代理<br/>
+(1) jdk代理的实现利用了java.lang.reflect包的Proxy类的newProxyInstance方法 以及 InvocationHandler 接口来调用具体方法<br/>
+(2) cglib 依赖spring-core核心包，是一个代码生成类库，可以在运行时动态的生成某个类的子类，cglib代理要求类和方法没有被final关键字修饰<br/>
 
 spring aop默认使用的是 jdk 动态代理，如果代理的类没有实现接口则会使用cglib代理 
-- spring aop的通知类型
-(1) Before : 前置通知，目标方法调用之前执行
-(2) After : 后置通知，目标方法完成之后执行，不关心方法结果
-(3) After-returning : 返回通知，目标方法成功执行之后通知
-(4) After-throwing : 异常通知，目标方法抛出异常后通知
-(5) Around : 环绕通知，方法调用之前和之后执行
+- spring aop的通知类型<br/>
+(1) Before : 前置通知，目标方法调用之前执行<br/>
+(2) After : 后置通知，目标方法完成之后执行，不关心方法结果<br/>
+(3) After-returning : 返回通知，目标方法成功执行之后通知<br/>
+(4) After-throwing : 异常通知，目标方法抛出异常后通知<br/>
+(5) Around : 环绕通知，方法调用之前和之后执行<br/>
 
 
 #### spring ioc的原理和实现
