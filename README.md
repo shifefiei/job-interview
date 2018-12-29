@@ -18,7 +18,12 @@
 ### jvm
 1. [G1收集器调优指南](https://docs.oracle.com/javase/9/gctuning/garbage-first-garbage-collector-tuning.htm#JSGCT-GUID-90E30ACA-8040-432E-B3A0-1E0440AB556A)
 
+### mySQL
+1. [索引](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-index.md)
+2. [事务](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-transaction.md)
 
+### 分布式
+1. [snowflake](https://github.com/shifefiei/job-interview/blob/master/distributed/snowflake-id.md)
 
 ### 其他java面试总结
 1. [interviews](https://github.com/kdn251/interviews/blob/master/README-zh-cn.md)
