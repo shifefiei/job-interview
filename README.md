@@ -19,7 +19,7 @@
 1. [G1收集器调优指南](https://docs.oracle.com/javase/9/gctuning/garbage-first-garbage-collector-tuning.htm#JSGCT-GUID-90E30ACA-8040-432E-B3A0-1E0440AB556A)
 
 ### mySQL
-1. [索引](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-index.md){:target="_blank"}
+1. [索引](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-index.md)
 2. [事务](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-transaction.md)
 2. [锁](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-lock.md)
 
