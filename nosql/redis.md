@@ -29,12 +29,12 @@ RDB 是一个非常紧凑（compact）的文件，它保存了 Redis 在某个�
 
 
 ### Redis 相关的java客户端
-1. Jedis
-    github：https://github.com/xetorthio/jedis
-    文档：https://github.com/xetorthio/jedis/wiki
+1. Jedis <br/>
+    github：https://github.com/xetorthio/jedis <br/>
+    文档：https://github.com/xetorthio/jedis/wiki <br/>
 
-2. Redisson：
-    github：https://github.com/redisson/redisson
-    文档：https://github.com/redisson/redisson/wiki
+2. Redisson <br/>
+    github：https://github.com/redisson/redisson <br/>
+    文档：https://github.com/redisson/redisson/wiki <br/>
 
 
