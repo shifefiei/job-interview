@@ -1,31 +1,10 @@
-
-
-
-
-
-
 ### ConcurrentHashMap 扩容两个链表相交的判断
-
-
-
-
-
-
-
-
-
-
-
 
 ### 基本命令了解，统计某个文件中某个人登录次数，不ok;
 
 ### git没用过，用的svn；maven解决冲突
 
 
-
-#### String ok StringBuffer 安全 StringBuilder不安全 stringbuilder使用场景不知道
-
-### object equals == 区别  和 String equals == 区别
 
 ### 二叉树结构：不太了解了
 
@@ -52,25 +31,19 @@ bean 循环依赖：没遇到场景
 事务传播：原理基本知道AOP实现 
 
 
-OOM: 不清楚
+OOM: 
 回收机制：没有细研究过
-
-策略：场景题：计算器设计 
-
 
 
 5.基本命令了解 grep，top，netstat等使用过，一般;
 
 6.git基本没使用过；
 
-
 GC垃圾回收算法，OK
 
 5.设计模式：基本OK
 
 6.mysql:数据量不大，没有优化经验，不OK。
-
-索引：不了解内部数据结构。
 
 7.mq无法说清楚内部结构。
 
@@ -90,11 +63,10 @@ https://www.cnblogs.com/chenny7/p/4224720.html
  索引：innoDB BTree，myisam 压缩 不OK
 隔离级别：4种OK 幻读含义：回答不正确 不可重复读：回答不正确 不OK
 索引：explain
-联合索引: 走索引方式 回答基本OK
+
 
 
 栈内存溢出程序：无法写出。不OK。
-
 
 
 6.索引数据结构，Btree，hash，btree索引的适用范围。不OK。
@@ -107,10 +79,8 @@ jdk提供的命令有了解，jstack查看进程运行状态但是，jmap和jsta
 
 8.jar包冲突，rebase和reset之间区别，不ok
 
-
-1.
-String StringBuffer StringBuilder 区别OK，StringBuffer是线程安全的,StringBuilder是线程不安全的 常用 StringBuffer StringBuilder 使用场景不太明确
 HaspMap 结构：数据+链表；key算法：不知道 
+
 concurrenthashmap: 线程安全的。比hashTable效率高 锁分段算法：没看过
 String equals ==: 比较方式回答不对
 tree: 数据结构 OK 遍历算法：不清晰
@@ -129,7 +99,6 @@ tree: 数据结构 OK 遍历算法：不清晰
 
 5.排序算法：知道插入和快排思路。OK
 
-6.JDK8的特性，不了解。不OK
 
 
 

@@ -54,7 +54,18 @@
 2. StringBuffer 和 StringBuilder，底层的存储结构和 String 都是一样的，使用的是char数组；不同点是StringBuffer/StringBuilder对象的值是可以改变；
 3. StringBuffer是线程安全的，而StringBuilder是线程不安全的，StringBuffer类中方法定义前面都会有synchronize关键字。为此，StringBuffer的性能要远低于StringBuilder。
 
-4. 应用场景
+4. 应用场景 <br/>
 (1) 在字符串内容不经常发生变化的业务场景优先使用String类。字符串拼接避免使用 "+",会产生大量无用的中间对象，消耗内存空。<br/>
 (2) 频繁的字符串操作的情况使用 StringBuffer(多线程时使用) 和 StringBuilder(单线程时使用)
+
+
+### Object 对象的 equals 和 == 区别 以及 String 对象的 equals 和 == 区别
+1. Object 对象的 equals 和 == 区别
+- Object 对象的 equals 和 == 都是比较的对象的引用；
+- 那为什么String类的equals方法却又是比较两个String对象的内容是否相同呢？<br/>
+    String类继承Object类后，也继承了equals方法，但String类对equals方法进行了重写。
+
+2. String 对象的 equals 和 == 区别
+- String 对象中的 == 比较的是对象的引用
+- String 的 equals 方法比较的是内容
 
