@@ -27,7 +27,7 @@
 1. [snowflake](https://github.com/shifefiei/job-interview/blob/master/distributed/snowflake-id.md)
 
 ### NoSQL
-1. [redis](https://github.com/shifefiei/job-interview/blob/master/nosql/nosql.md)
+1. [redis](https://github.com/shifefiei/job-interview/blob/master/nosql/redis.md)
 
 ### 其他java面试总结
 1. [interviews](https://github.com/kdn251/interviews/blob/master/README-zh-cn.md)
