@@ -4,7 +4,7 @@
 
 
 #### 集合
-1. [hashMap](https://github.com/shifefiei/job-interview/blob/master/collection/hashmap.md)
+1. [hashMap](https://github.com/shifefiei/job-interview/blob/master/collection/hashMap.md)
 2. [concurrentHashMap](https://github.com/shifefiei/job-interview/blob/master/collection/concurrentHashMap.md)
 
 
