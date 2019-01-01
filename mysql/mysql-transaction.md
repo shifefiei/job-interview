@@ -20,4 +20,4 @@
     ![更新丢失2](https://github.com/shifefiei/job-interview/blob/master/static/picture/update-2.png)<br/>
     
 #### 事务隔离级别
-  ![幻读](https://github.com/shifefiei/job-interview/blob/master/static/picture/update-2.png)<br/>
+  ![幻读](https://github.com/shifefiei/job-interview/blob/master/static/picture/gljb.png)<br/>
