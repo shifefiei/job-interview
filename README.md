@@ -10,10 +10,12 @@
 
 #### spring
 1. [spring aop 和 spring ioc](https://github.com/shifefiei/job-interview/blob/master/spring/spring.md)
+1. [spring 事务隔离级别](https://github.com/shifefiei/job-interview/blob/master/spring/spring-transaction.md)
 
 
 ### 线程
 1. [线程池](https://github.com/shifefiei/job-interview/blob/master/thread/thread-pool.md)
+1. [线程池](https://github.com/shifefiei/job-interview/blob/master/thread/threadLocal.md)
 
 ### jvm
 1. [G1收集器调优指南](https://docs.oracle.com/javase/9/gctuning/garbage-first-garbage-collector-tuning.htm#JSGCT-GUID-90E30ACA-8040-432E-B3A0-1E0440AB556A)
@@ -22,6 +24,7 @@
 1. [索引](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-index.md)
 2. [事务](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-transaction.md)
 2. [锁](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-lock.md)
+2. [mysql方法](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-optimize.md)
 
 ### 分布式
 1. [snowflake](https://github.com/shifefiei/job-interview/blob/master/distributed/snowflake-id.md)
@@ -41,3 +44,4 @@
 ### java面试算法
 1. [LintCode](https://github.com/awangdev/LintCode)
 2. [常见数据结构](https://github.com/kdn251/interviews/blob/master/README-zh-cn.md)
+2. [CAS理解](https://github.com/shifefiei/job-interview/blob/master/arithmetic/cas.md)
