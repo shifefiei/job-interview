@@ -3,18 +3,22 @@
 #### 五个隔离级别
 spring在 TransactionDefinition 接口中定义了五个不同的事务隔离级别<br/>
 
-1. ISOLATION_DEFAULT 使用数据库默认的事务隔离级别；另外四个与JDBC的隔离级别相对应。
-2. ISOLATION_READ_UNCOMMITTED 这是事务最低的隔离级别，它充许别外一个事务可以看到这个事务未提交的数据。这种隔离级别会产生脏读，不可重复读和幻像读
-3. ISOLATION_READ_COMMITTED 保证一个事务修改的数据提交后才能被另外一个事务读取。另外一个事务不能读取该事务未提交的数据。这种事务隔离级别可以避免脏读出现，但是可能会出现不可重复读和幻像读。
-4. ISOLATION_REPEATABLE_READ 这种事务隔离级别可以防止脏读，不可重复读。但是可能出现幻像读。它除了保证一个事务不能读取另一个事务未提交的数据外，还保证了避免下面的情况产生(不可重复读)。
-6. ISOLATION_SERIALIZABLE 这是花费最高代价但是最可靠的事务隔离级别。事务被处理为顺序执行。除了防止脏读，不可重复读外，还避免了幻像读。
+1. ISOLATION_DEFAULT 使用数据库默认的事务隔离级别
+2. ISOLATION_READ_UNCOMMITTED <br/>
+    事务最低的隔离级别，它充许别外一个事务可以看到这个事务未提交的数据。这种隔离级别会产生脏读，不可重复读和幻像读
+3. ISOLATION_READ_COMMITTED <br/>
+    保证一个事务修改的数据提交后才能被另外一个事务读取。不允许脏读的出现，可能会出现不可重复读和幻像读。
+4. ISOLATION_REPEATABLE_READ  <br/>
+    这种事务隔离级别可能会出现幻像读。
+6. ISOLATION_SERIALIZABLE  <br/>
+    最可靠的事务隔离级别。事务被处理为顺序执行。除了防止脏读，不可重复读外，还避免了幻像读。
 
 
 #### 七个事务传播行为
 
 在TransactionDefinition接口中定义了七个事务传播行为: <br/>
 
-1. PROPAGATION_REQUIRED 如果存在一个事务，则支持当前事务。如果没有事务则开启一个新的事务。
+1. PROPAGATION_REQUIRED 如果存在一个事务，则支持当前事务。如果没有事务则开启一个新的事务。默认的spring事务传播级别。
 
 2. PROPAGATION_SUPPORTS 如果存在一个事务，支持当前事务。如果没有事务，则非事务的执行。但是对于事务同步的事务管理器，PROPAGATION_SUPPORTS与不使用事务有少许不同。
 
@@ -26,4 +30,6 @@ spring在 TransactionDefinition 接口中定义了五个不同的事务隔离级
 
 6. PROPAGATION_NEVER 总是非事务地执行，如果存在一个活动事务，则抛出异常
 
-7. PROPAGATION_NESTED如果一个活动的事务存在，则运行在一个嵌套的事务中. 如果没有活动事务, 则按TransactionDefinition.PROPAGATION_REQUIRED 属性执行
+7. PROPAGATION_NESTED 如果一个活动的事务存在，则运行在一个嵌套的事务中. 如果没有活动事务, 则按TransactionDefinition.PROPAGATION_REQUIRED 属性执行
+
+#### [参考文章](https://yq.aliyun.com/articles/48893)
