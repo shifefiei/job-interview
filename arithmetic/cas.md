@@ -22,7 +22,7 @@ class Unsafe {
     
     /**
     * 拿到内存位置的最新值 var5，使用CAS尝试修将内存位置的值修改为目标值 var5 + var4，
-    * 如果修改失败，则获取该内存位置的新值v，然后继续尝试，直至修改成功。
+    * 如果修改失败，则会继续循环获取该内存位置的新值v，然后继续尝试，直至修改成功。
     */
     public final int getAndAddInt(Object var1, long var2, int var4) {
         int var5;
