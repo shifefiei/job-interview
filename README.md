@@ -1,6 +1,7 @@
 ### 面试题总结
 #### java基础
 1. [static和final关键字](https://github.com/shifefiei/job-interview/blob/master/basics/basice-static.md)
+2. [Object有哪些方法、Integer和int的区别](https://github.com/shifefiei/job-interview/blob/master/basics/object-integer-int.md)
 
 
 #### 集合
