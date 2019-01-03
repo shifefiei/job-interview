@@ -3,7 +3,7 @@
 2. Hash（哈希表），键值对集合
 3. List（列表），底层是双向链表
 4. Set（集合）
-5. SortSet（有序集合）
+5. ZSet（有序集合）
 
 
 ### Redis的数据结构和对象：
@@ -36,5 +36,9 @@ RDB 是一个非常紧凑（compact）的文件，它保存了 Redis 在某个�
 2. Redisson <br/>
     github：https://github.com/redisson/redisson <br/>
     文档：https://github.com/redisson/redisson/wiki <br/>
+    
+3. Redis 学习文档<br/>
+    [社区文档](http://redis.cn/documentation.html)
+    [Redis翻译文档](http://doc.redisfans.com/index.html)
 
 
