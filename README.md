@@ -15,22 +15,38 @@
 
 ### 线程
 1. [线程池](https://github.com/shifefiei/job-interview/blob/master/thread/thread-pool.md)
-1. [线程池](https://github.com/shifefiei/job-interview/blob/master/thread/threadLocal.md)
+1. [ThreadLocal](https://github.com/shifefiei/job-interview/blob/master/thread/threadLocal.md)
+1. [CountDownLatch](https://github.com/shifefiei/job-interview/blob/master/thread/countDownLatch.md)
 
 ### jvm
 1. [G1收集器调优指南](https://docs.oracle.com/javase/9/gctuning/garbage-first-garbage-collector-tuning.htm#JSGCT-GUID-90E30ACA-8040-432E-B3A0-1E0440AB556A)
+1. [各种垃圾收集器](https://github.com/shifefiei/job-interview/blob/master/jvm/jvm-gc.md)
 
 ### mySQL
 1. [索引](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-index.md)
 2. [事务](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-transaction.md)
 2. [锁](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-lock.md)
-2. [mysql方法](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-optimize.md)
+2. [mysql优化](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-optimize.md)
+2. [mysql主从同步](https://github.com/shifefiei/job-interview/blob/master/mysql/mysql-master-slave.md)
 
 ### 分布式
 1. [snowflake](https://github.com/shifefiei/job-interview/blob/master/distributed/snowflake-id.md)
+1. [dubbo](https://github.com/shifefiei/job-interview/blob/master/distributed/dubbo.md)
+1. [分布式事务](https://github.com/shifefiei/job-interview/blob/master/distributed/distributed-transaction.md)
 
 ### NoSQL
 1. [redis](https://github.com/shifefiei/job-interview/blob/master/nosql/redis.md)
+1. [redis主从复制](https://github.com/shifefiei/job-interview/blob/master/nosql/redis-master-slave.md)
+
+### Arithmetic
+1. [cas](https://github.com/shifefiei/job-interview/blob/master/arithmetic/cas.md)
+
+### MQ
+1. [MQ](https://github.com/shifefiei/job-interview/blob/master/mq/mq-theory.md)
+
+
+### 网络
+1. [OSI模型](https://github.com/shifefiei/job-interview/blob/master/network/osi-handshake.md)
 
 ### 其他java面试总结
 1. [interviews](https://github.com/kdn251/interviews/blob/master/README-zh-cn.md)
