@@ -44,7 +44,7 @@
 1. [cas](https://github.com/shifefiei/job-interview/blob/master/arithmetic/cas.md)
 
 ### MQ
-1. [MQ](https://github.com/shifefiei/job-interview/blob/master/mq/mq-theory.md)
+1. [mq基本原理](https://github.com/shifefiei/job-interview/blob/master/mq/mq-theory.md)
 
 
 ### 网络
