@@ -23,7 +23,7 @@
 4. 那么HashMap根据hashcode是如何得到数组下标呢？可以拆分为以下几步：<br/>
     (1) h = key.hashCode() <br/>
     (2) h ^ (h >>> 16) : 高16位 异或 低16位,保证高位低位都能参与到计算中 <br/>
-    (3) (length - 1) & hash ：对length 取模
+    (3) (length - 1) & h ：对length 取模
 
 ```java
 class HashMap {

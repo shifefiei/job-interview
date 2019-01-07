@@ -47,3 +47,4 @@
 
 [jvm](https://github.com/frank-lam/fullstack-tutorial/blob/master/notes/JavaArchitecture/05-Java%E8%99%9A%E6%8B%9F%E6%9C%BA.md#4-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8)
 [参考文章](https://segmentfault.com/a/1190000016152186)
+[参考文章](http://youzhixueyuan.com/jvm-garbage-collector.html)
