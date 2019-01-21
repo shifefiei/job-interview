@@ -14,12 +14,12 @@
 3. 字典
 4. 跳跃表，Redis使用跳跃表作为有序集合键底层的实现；
 
-### Redis的持久化
+### [Redis的持久化](http://redis.cn/topics/persistence.html)
 1. Redis持久化方式<br/>
 （1）RDB持久化：指定的时间间隔内生成数据集的时间点快照；<br/>
 （2）AOF持久化：记录服务器执行的所有写操作命令，并在服务器启动时，通过重新执行这些命令来还原数据集；
 
-2. [RDB优缺点](http://redis.cn/topics/persistence.html) <br/>
+2. RDB优缺点<br/>
 RDB 是一个非常紧凑（compact）的文件，它保存了 Redis 在某个时间点上的数据集。 这种文件非常适合用于进行备份；
 适合灾难恢复；RDB 在恢复数据集时的速度比 AOF 的恢复速度要快。会丢失较长时间的数据；
 3. AOF优缺点<br/>
