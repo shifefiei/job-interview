@@ -31,3 +31,5 @@
 - volatile 仅能实现变量的修改可见性，并不能保证原子性；synchronized 则可以保证变量的修改可见性和原子性；
 
 - volatile 不会造成线程的阻塞；synchronized 可能会造成线程的阻塞；
+
+### reentrantLock 与 synchronized

@@ -1,3 +1,5 @@
+## [redis复习](http://wiki.jikexueyuan.com/project/redis/)
+
 ### redis的数据类型
 1. String（字符串），可以存储任何数据,在 Redis 中字符串类型的值最大只能保存 512 MB。
 2. Hash（哈希表），键值对集合
@@ -27,6 +29,11 @@ RDB 是一个非常紧凑（compact）的文件，它保存了 Redis 在某个�
 1. [Redis复习精讲](http://blog.jobbole.com/114050/?utm_source=blog.jobbole.com&utm_medium=relatedPosts)
 
 
+### [redis面试题](https://mp.weixin.qq.com/s?__biz=MzAwMDU1MTE1OQ==&mid=2653549993&idx=1&sn=27240c1aa611c352a487ecee8ded050b&chksm=813a6431b64ded27fd43bd07d5245b672a6e03e7b7d4482ccef58510d97dfadc39d82d257416&mpshare=1&scene=23&srcid=07247wQ3gUtqXo3EEDXNgcVk%23rd)
+- [redis面试题](https://mp.weixin.qq.com/s?__biz=MzAwMDU1MTE1OQ==&mid=2653549993&idx=1&sn=27240c1aa611c352a487ecee8ded050b&chksm=813a6431b64ded27fd43bd07d5245b672a6e03e7b7d4482ccef58510d97dfadc39d82d257416&mpshare=1&scene=23&srcid=07247wQ3gUtqXo3EEDXNgcVk%23rd)
+- [redis面试题2](https://mp.weixin.qq.com/s?__biz=MzI4NTA1MDEwNg==&mid=2650768368&idx=1&sn=61972539ec7b0a0b68cce5f127174ae6&chksm=f3f93665c48ebf7322943d1974f63e883488c60bbb2e4414bccf6dfe9d8489ad58e1557ae270&mpshare=1&scene=23&srcid=0625sJRHndesZGlMHGPWxNZK%23rd)
+- [redis主从同步](https://www.kancloud.cn/mayan0718/php/515287)
+- [redis哨兵](https://juejin.im/post/5b7d226a6fb9a01a1e01ff64)
 
 ### Redis 相关的java客户端
 1. Jedis <br/>
