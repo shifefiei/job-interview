@@ -19,13 +19,14 @@
 
     (1)组合索引，左匹配原则<br/>
         现有如下查询条件：select * from emp where a = x and b = y and c = z;(a,b,c联合索引) <br/>
-        - = 和 in 可以乱序，优化后能够被识别
-        - 在查询条件 where a = x and b > y and c = z 中，a,b 可以用到索引，但是 c 用不到，mysql会向右匹配，遇到 (>,<,between ... and 会停止)
+        (a)= 和 in 可以乱序，优化后能够被识别 <br/>
+        (b)在查询条件 where a = x and b > y and c = z 中，a,b 可以用到索引，但是 c 用不到，mysql会向右匹配，遇到 (>,<,between ... and 会停止)
     (2)单列索引   <br/>
-        - 普通索引,create index index_name on table(col)
-        - 唯一索引，允许有控制,create unique index_name on table(col) 
-        - 主键索引，不允许空值
+        (a)普通索引,create index index_name on table(col) <br/>
+        (b)唯一索引，允许有控制,create unique index_name on table(col)  <br/>
+        (c)主键索引，不允许空值 <br/>
 
+    (3)[索引失效的情况](https://blog.csdn.net/kaka1121/article/details/53395628)
 
 4. mysql有哪些引擎
 - MEMORY

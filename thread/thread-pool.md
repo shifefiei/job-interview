@@ -43,22 +43,22 @@
     - 当 workQueue 已存满，放不下新任务时则新建非核心线程入池，并处理请求直到线程数目达到 maximumPoolSize（最大线程数量设置值）<br/>
     - 如果线程池中线程数大于 maximumPoolSize 则使用 RejectedExecutionHandler 来进行任务拒绝处理 <br/>
 
-3. [线程池参数预估](http://ifeve.com/how-to-calculate-threadpool-size/)
+3. [线程池参数预估](http://ifeve.com/how-to-calculate-threadpool-size/)<br/>
     (1) 如何来设置<br/>
         - 需要根据几个值来决定<br/>
-            - tasks ：每秒的任务数，假设为500~1000 <br/>
+            - tasks ：每秒的任务数，假设为500 ~ 1000 <br/>
             - taskcost：每个任务花费时间，假设为0.1s <br/>
             - responsetime：系统允许容忍的最大响应时间，假设为1s <br/>
         - 做几个计算 <br/>
             - corePoolSize = 每秒需要多少个线程处理 <br/>
-                * threadcount = tasks/(1/taskcost) =tasks*taskcout =  (500~1000)*0.1 = 50~100 个线程。corePoolSize设置应该大于50 <br/>
-                * 根据8020原则，如果80%的每秒任务数小于800，那么corePoolSize设置为80即可 <br/>
+                - threadcount = tasks/(1/taskcost) =tasks*taskcout =  (500~1000)*0.1 = 50~100 个线程。corePoolSize设置应该大于50 <br/>
+                - 根据8020原则，如果80%的每秒任务数小于800，那么corePoolSize设置为80即可 <br/>
             - queueCapacity = (coreSizePool/taskcost)*responsetime,阻塞队列的大小 <br/>
-                * 计算可得 queueCapacity = 80/0.1*1 = 80。意思是队列里的线程可以等待1s，超过了的需要新开线程来执行 <br/>
-                * 切记不能设置为Integer.MAX_VALUE，这样队列会很大，线程数只会保持在corePoolSize大小，当任务陡增时，不能新开线程来执行，响应时间会随之陡增。<br/>
+                - 计算可得 queueCapacity = 80/0.1*1 = 80。意思是队列里的线程可以等待1s，超过了的需要新开线程来执行 <br/>
+                - 切记不能设置为Integer.MAX_VALUE，这样队列会很大，线程数只会保持在corePoolSize大小，当任务陡增时，不能新开线程来执行，响应时间会随之陡增。<br/>
             - maxPoolSize = (max(tasks)- queueCapacity)/(1/taskcost) <br/>
-                * 计算可得 maxPoolSize = (1000-80)/10 = 92 <br/> 
-                * （最大任务数-队列容量）/每个线程每秒处理能力 = 最大线程数 <br/>
+                - 计算可得 maxPoolSize = (1000-80)/10 = 92 <br/> 
+                - （最大任务数-队列容量）/每个线程每秒处理能力 = 最大线程数 <br/>
             - rejectedExecutionHandler：根据具体情况来决定，任务不重要可丢弃，任务重要则要利用一些缓冲机制来处理 <br/>
             - keepAliveTime和allowCoreThreadTimeout采用默认通常能满足 <br/>
 
