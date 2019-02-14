@@ -23,8 +23,8 @@
         (b)在查询条件 where a = x and b > y and c = z 中，a,b 可以用到索引，但是 c 用不到，mysql会向右匹配，遇到 (>,<,between ... and 会停止)
     (2)单列索引   <br/>
         (a)普通索引,create index index_name on table(col) <br/>
-        (b)唯一索引，允许有控制,create unique index_name on table(col)  <br/>
-        (c)主键索引，不允许空值 <br/>
+        (b)唯一索引，允许有控制,create unique index_name on table(col) <br/>
+        (c)主键索引，不允许空值
 
     (3)[索引失效的情况](https://blog.csdn.net/kaka1121/article/details/53395628)
 

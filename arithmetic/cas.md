@@ -1,4 +1,4 @@
-### CAS 算法
+### [CAS 算法](https://segmentfault.com/a/1190000013660507)
 
 1. 什么是CAS？<br/>
 (1) Compare and Swap，即比较再交换。<br/>

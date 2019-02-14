@@ -1,4 +1,6 @@
-### AQS 是什么
+### [CAS操作](https://segmentfault.com/a/1190000013660507)
+
+### [AQS 是什么](https://segmentfault.com/a/1190000014102756)
 AQS 是 AbstractQueuedSynchronizer 的简称。
 - AQS是一个用来构建锁和同步器的框架，比如我们提到的ReentrantLock,CountDownLatch；它仅仅只是提供独占锁和共享锁两种方式；
 AQS中采用了一个state的状态位 + 一个FIFO的队列的方式，记录了锁的获取，释放等
@@ -9,6 +11,9 @@ AQS中采用了一个state的状态位 + 一个FIFO的队列的方式，记录�
 [ReentrantLock](https://blog.csdn.net/jeffleo/article/details/56677425)
 [并发编程网 AbstractQueuedSynchronizer](http://ifeve.com/introduce-abstractqueuedsynchronizer/)
 [AbstractQueuedSynchronizer](https://blog.csdn.net/jeffleo/article/details/56677425)
+
+
+
 
 ### CountDownLatch
 
