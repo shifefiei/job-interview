@@ -57,3 +57,7 @@ ioc 控制反转，指将对象的创建权，反转到spring容器 ; di 依赖�
 包括了：UrlResource，ClassPathResource，FileSystemResource等，Spring需要针对不同的资源采取不同的访问策略。
 在这里，Spring让ApplicationContext成为了资源访问策略的“决策者”
 - [代理模式](https://github.com/shifefiei/dp-review/blob/master/dp-proxy/src/main/resources/proxy.md)
+
+### ioc和aop的理解
+- [文章一](https://segmentfault.com/a/1190000012734061)
+- [文章二](http://blog.didispace.com/spring-ioc-aop/)

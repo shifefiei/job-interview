@@ -22,3 +22,13 @@ mysql数据库是一个多用户共享的资源，多个用户并发访问时，
         乐观锁的实现方式：(1) 使用版本号机制；(2) CAS 算法
         
 4. [mysql 官方文档](https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html)
+
+5.[java中的各种锁](https://my.oschina.net/yanpenglei/blog/2997157)
+- 公平锁 / 非公平锁
+- 可重入锁 / 不可重入锁
+- 独享锁 / 共享锁
+- 互斥锁 / 读写锁
+- 乐观锁 / 悲观锁
+- 分段锁
+- 偏向锁 / 轻量级锁 / 重量级锁
+- 自旋锁
