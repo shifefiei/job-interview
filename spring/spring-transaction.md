@@ -33,3 +33,4 @@ spring在 TransactionDefinition 接口中定义了五个不同的事务隔离级
 7. PROPAGATION_NESTED 如果一个活动的事务存在，则运行在一个嵌套的事务中. 如果没有活动事务, 则按TransactionDefinition.PROPAGATION_REQUIRED 属性执行
 
 #### [参考文章](https://yq.aliyun.com/articles/48893)
+####[spring事务传播属性](https://blog.csdn.net/weixin_39625809/article/details/80707695)
