@@ -34,3 +34,4 @@ spring在 TransactionDefinition 接口中定义了五个不同的事务隔离级
 
 #### [参考文章](https://yq.aliyun.com/articles/48893)
 ####[spring事务传播属性](https://blog.csdn.net/weixin_39625809/article/details/80707695)
+####[事务传播中的方法调用](https://blog.csdn.net/KinseyGeek/article/details/54931710)
