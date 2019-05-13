@@ -6,7 +6,13 @@
 
     <groupId>com.sff.job.interview</groupId>
     <artifactId>job-interview</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>dp-review</module>
+        <module>juc-core</module>
+        <module>leetcode</module>
+    </modules>
 
 
     <dependencies>
