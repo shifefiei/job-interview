@@ -1,4 +1,4 @@
-package com.sff.juc;
+package com.sff.juc.utils;
 
 
 import java.util.concurrent.CyclicBarrier;
