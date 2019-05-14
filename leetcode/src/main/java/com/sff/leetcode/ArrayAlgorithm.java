@@ -1,8 +1,6 @@
 package com.sff.leetcode;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author shifeifei
@@ -116,6 +114,117 @@ public class ArrayAlgorithm {
             }
         }
         System.out.println(Arrays.toString(array));
+    }
+
+    /**
+     * 7.给定一个整数数组，判断是否存在重复元素。
+     * <p>
+     * 输入: [1,2,3,1]
+     * 输出: true
+     * <p>
+     * 输入: [1,2,3,4]
+     * 输出: false
+     *
+     * @param nums
+     * @return
+     */
+    public static boolean containsDuplicate(int[] nums) {
+        if (nums.length == 0 || nums.length == 1) {
+            return true;
+        }
+        HashSet<Integer> set = new HashSet<Integer>();
+        for (int num : nums) {
+            if (set.contains(num)) {
+                return true;
+            }
+            set.add(num);
+        }
+        return false;
+    }
+
+    /**
+     * 6. 删除排序数组中的重复项
+     * 给定 nums = [0,0,1,1,1,2,2,3,3,4],
+     * <p>
+     * 函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。
+     *
+     * @param nums
+     * @return
+     */
+    public static void removeDuplicates(int[] nums) {
+        int i = 0;
+
+        StringBuffer a = new StringBuffer();
+        for (int j = 1; j < nums.length; j++) {
+            if (nums[j] != nums[i]) {
+                i++;
+                nums[i] = nums[j];
+                a = a.append(nums[i]).append(",");
+            }
+        }
+        System.out.println(a);
+    }
+
+    /**
+     * 5.移除数组中指定元素
+     * <p>
+     * 给定 nums = [0,1,2,2,3,0,4,2], val = 2,
+     * <p>
+     * 函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。
+     *
+     * @param nums
+     * @param val
+     * @return
+     */
+    public static int removeElement(int[] nums, int val) {
+
+        List<Integer> list = new ArrayList<Integer>();
+        for (int num : nums) {
+            if (val != num) {
+                list.add(num);
+            }
+        }
+        System.out.println(list.toString());
+        return list.size();
+    }
+
+    /**
+     * 4. 给定两个数组，求它们的交集
+     * <p>
+     * 输入: nums1 = [1,2,2,1], nums2 = [2,2]
+     * 输出: [2]
+     * <p>
+     * 示例 2:
+     * 输入: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+     * 输出: [9,4]
+     * <p>
+     * (1) 先排序
+     * (2) 定义两个指针同时遍历 两个数组，找出相同的数
+     */
+    public static void unionTwoArray(int[] a, int[] b) {
+
+        Arrays.sort(a);
+        Arrays.sort(b);
+
+        int aLen = 0;
+        int bLen = 0;
+
+        Set<Integer> sets = new HashSet<Integer>();
+
+        while (aLen < a.length && bLen < b.length) {
+            if (a[aLen] < b[bLen]) {
+                aLen++;
+            } else if (a[aLen] > b[bLen]) {
+                bLen++;
+            } else {
+                if (!sets.contains(a[aLen])) {
+                    sets.add(a[aLen]);
+                }
+                aLen++;
+                bLen++;
+            }
+        }
+        System.out.println(Arrays.toString(sets.toArray()));
     }
 
 
