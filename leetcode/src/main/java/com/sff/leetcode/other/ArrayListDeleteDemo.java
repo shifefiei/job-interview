@@ -3,7 +3,7 @@ package com.sff.leetcode.other;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class ArrayListDemo {
+public class ArrayListDeleteDemo {
 
 
     public static void main(String[] args) {

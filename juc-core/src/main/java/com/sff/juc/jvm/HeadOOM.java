@@ -15,7 +15,7 @@ public class HeadOOM {
     public static void main(String[] args) throws Exception {
 
         Thread t = new Thread(new MyThread(111));
-        t.setName("序号：" + 111);
+       // t.setName("序号：" + 111);
         t.start();
 
     }

@@ -1,8 +1,6 @@
 package com.sff.juc.pool;
 
 import com.netflix.hystrix.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -12,24 +10,21 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadPoolIsolationDemo {
 
-
-    private final static Logger log = LoggerFactory.getLogger(ThreadPoolIsolationDemo.class);
-
     /**
      * 订单服务
      */
     static class CommandOrder extends HystrixCommand<String> {
 
 
-        private final static Logger log = LoggerFactory.getLogger(CommandOrder.class);
-
         private String orderName;
 
         public CommandOrder(String orderName) {
 
             super(Setter.withGroupKey(
-                    HystrixCommandGroupKey.Factory.asKey("OrderGroup")) //服务分组
-                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("OrderPool")) //线程分组
+                    //服务分组
+                    HystrixCommandGroupKey.Factory.asKey("OrderGroup"))
+                    //线程分组
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("OrderPool"))
                     .andThreadPoolPropertiesDefaults(
                             HystrixThreadPoolProperties.Setter()
                                     .withCoreSize(2)
@@ -39,16 +34,18 @@ public class ThreadPoolIsolationDemo {
                     )
                     .andCommandPropertiesDefaults(
                             HystrixCommandProperties.Setter()
+                                    //线程池隔离
                                     .withExecutionIsolationStrategy(
-                                            HystrixCommandProperties.ExecutionIsolationStrategy.THREAD) //线程池隔离
+                                            HystrixCommandProperties.ExecutionIsolationStrategy.THREAD)
                     )
             );
             this.orderName = orderName;
 
         }
 
+        @Override
         protected String run() throws Exception {
-            log.info("<<<<<<<<<<<<<<<<<<< " + orderName + " >>>>>>>>>>>>>>>>>>>");
+            System.out.println("<<<<<<<<<<<<<<<<<<< " + orderName + " >>>>>>>>>>>>>>>>>>>");
             TimeUnit.MILLISECONDS.sleep(100);
             return "orderName = " + orderName;
         }
@@ -60,7 +57,6 @@ public class ThreadPoolIsolationDemo {
      */
     static class CommandUser extends HystrixCommand<String> {
 
-        private final static Logger log = LoggerFactory.getLogger(CommandUser.class);
 
         private String userName;
 
@@ -85,8 +81,9 @@ public class ThreadPoolIsolationDemo {
 
         }
 
+        @Override
         protected String run() throws Exception {
-            log.info(">>>>>>>>>>>>>>>>>>> " + userName + " <<<<<<<<<<<<<<<<<<<<");
+            System.out.println(">>>>>>>>>>>>>>>>>>> " + userName + " <<<<<<<<<<<<<<<<<<<<");
             TimeUnit.MILLISECONDS.sleep(100);
             return "orderName = " + userName;
         }
@@ -99,17 +96,17 @@ public class ThreadPoolIsolationDemo {
         CommandOrder commandPc = new CommandOrder("电视");
         //阻塞方式执行
         String execute = commandPhone.execute();
-        log.info(" phone : " + execute);
+        System.out.println(" phone : " + execute);
 
         //异步非阻塞方式
         Future<String> queue = commandPc.queue();
         String value = queue.get(200, TimeUnit.MILLISECONDS);
-        log.info("pc : " + value);
+        System.out.println("pc : " + value);
 
 
         CommandUser commandUser = new CommandUser("张三");
         String name = commandUser.execute();
-        log.info("name : " + name);
+        System.out.println("name : " + name);
 
     }
 
