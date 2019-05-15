@@ -19,8 +19,8 @@ public class ThreadPoolRename {
      */
     private static int coreSize = Runtime.getRuntime().availableProcessors() + 1;
 
-
     private static int maxSize = 4;
+
     private static int timeOut = 1000;
 
     public static void main(String[] args) {
