@@ -1,9 +1,6 @@
 package com.sff.juc.pool;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -16,6 +13,9 @@ public class ThreadPoolRename {
 
     /**
      * cpu密集型任务，核心线程数设置为 cpu数+1; io密集型任务，核心线程数设置为 2*cpu数
+     * <p>
+     * 需要注意的是：Runtime.getRuntime().availableProcessors() 获取的是物理机的cpu数；
+     * 但是好多系统都是基于虚拟容器部署，此时该方法要慎重使用，最好手动设固定的线程数
      */
     private static int coreSize = Runtime.getRuntime().availableProcessors() + 1;
 
@@ -24,31 +24,49 @@ public class ThreadPoolRename {
     private static int timeOut = 1000;
 
     public static void main(String[] args) {
-
+        /**
+         * 线程池的拒绝策略
+         *
+         * RejectedExecutionHandler handler = new ThreadPoolExecutor.AbortPolicy();
+         *
+         * 1、DiscardPolicy: 默默丢弃无法处理的任务，不予任何处理
+         * 2、DiscardOldestPolicy: 丢弃队列中最老的任务, 尝试再次提交当前任务
+         * 3、AbortPolicy: 丢弃任务并抛出RejectedExecutionException异常
+         * 4、CallerRunsPolicy: 将任务分给调用线程来执行,运行当前被丢弃的任务，这样做不会真的丢弃任务，但是提交的线程性能有可能急剧下降
+         *
+         */
+        RejectedExecutionHandler handler = new MyRejectedExecutionHandler();
         ThreadPoolExecutor executor = new ThreadPoolExecutor(
-                coreSize,
+                2,
                 maxSize,
                 timeOut,
-                TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(10), new RenameThreadFactory("sff"));
+                TimeUnit.MILLISECONDS,
+                new ArrayBlockingQueue<Runnable>(10),
+                new RenameThreadFactory("sff"),
+                handler);
 
         try {
             AtomicInteger atomic = new AtomicInteger(0);
-
-            System.out.println(Runtime.getRuntime().availableProcessors());
-
             while (true) {
                 executor.execute(new Task(atomic.getAndIncrement()));
-                Thread.sleep(1000);
+                //Thread.sleep(1);
             }
+//        } catch (InterruptedException ex) {
+//            //线程池的中断异常如何处理
+//            ex.printStackTrace();
         } catch (Exception e) {
+            //其他异常处理
             e.printStackTrace();
-        } catch (Throwable t) {
-            t.getCause();
+        } finally {
+            executor.shutdown();
         }
+
     }
 }
 
-
+/**
+ * 自定义线程的名称规则
+ */
 class RenameThreadFactory implements ThreadFactory {
 
     /**
@@ -80,7 +98,7 @@ class RenameThreadFactory implements ThreadFactory {
         SecurityManager securityManager = System.getSecurityManager();
         group = (null != securityManager) ? securityManager.getThreadGroup() : Thread.currentThread().getThreadGroup();
         //组装线程前缀
-        namePrefix = prefix + "-poolNumber:" + poolNumber.getAndIncrement() + "-threadNumber:";
+        namePrefix = prefix + "-pool:" + poolNumber.getAndIncrement() + "-thread:";
     }
 
     public Thread newThread(Runnable r) {
@@ -98,7 +116,20 @@ class RenameThreadFactory implements ThreadFactory {
 
 }
 
+/**
+ * 自定义拒接策略
+ */
+class MyRejectedExecutionHandler implements RejectedExecutionHandler {
 
+    public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
+
+    }
+}
+
+
+/**
+ * 线程任务
+ */
 class Task implements Runnable {
     private Integer atomic;
 
